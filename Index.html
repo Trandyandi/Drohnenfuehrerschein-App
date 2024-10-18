@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        ...
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#1abc9c">
+        ...
+    </head>
+
+        
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drohnenführerschein Lern-App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #34495e;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #1abc9c;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+        }
+
+        .btn {
+            display: block;
+            background-color: #1abc9c;
+            color: black;
+            padding: 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #16a085;
+            transform: scale(1.05);
+        }
+
+        .btn-red {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-red:hover {
+            background-color: #c0392b;
+        }
+
+        .content {
+            display: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .content.show {
+            display: block;
+        }
+
+        .module-message {
+            display: none;
+            font-size: 18px;
+            color: #e74c3c;
+            margin-top: 10px;
+        }
+
+        .module-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Drohnenführerschein Lern-App</h1>
+    <p>Wähle einen Bereich aus, um wichtige Informationen zu lesen oder starte das Quiz:</p>
+
+    <ul>
+        <li><button class="btn" onclick="toggleVisibility('modul1')">Modul 1: Luftrecht und Sicherheit</button></li>
+        <li><button class="btn" onclick="toggleVisibility('modul2')">Modul 2: Menschliches Leistungsvermögen</button></li>
+        <li><button class="btn" onclick="toggleVisibility('modul3')">Modul 3: Betriebliche Verfahren</button></li>
+        <li><button class="btn" onclick="toggleVisibility('modul4')">Modul 4: Allgemeine UAS-Kunde</button></li>
+        <li><button class="btn" onclick="toggleVisibility('wissen')">Teste dein Wissen</button></li>
+        <li><button class="btn" onclick="toggleVisibility('quiz')">Quiz starten</button></li>
+        
+        <!-- Roter Button für den LBA-Link -->
+        <li><a href="https://www.lba.de/" class="btn btn-red" target="_blank">Zum LBA</a></li>
+    </ul>
+
+    </ul>
+    
+    </ul>
+    <!-- Modul 1 Container -->
+    <div id="modul1" class="content">
+        <h2>Modul 1: Luftrecht und Sicherheit</h2>
+        <p><strong>Klassifizierung der UAS:</strong></p>
+        <ul>
+            <li>Kategorie A1: Kein Überflug von unbeteiligten Personen erlaubt.</li>
+            <li>Kategorie A2: Fliegen in sicherem Abstand von Menschen (mindestens 30 Meter).</li>
+            <li>Kategorie A3: Nur in Bereichen ohne Menschenansammlungen und in sicherer Entfernung zu anderen Luftfahrzeugen und Gebäuden.</li>
+        </ul>
+
+        <p><strong>Verantwortlichkeiten des Drohnenführers:</strong></p>
+        <ul>
+            <li>Der Drohnenführer ist für den sicheren Betrieb verantwortlich und muss sicherstellen, dass alle Vorschriften eingehalten werden.</li>
+            <li>Vor jedem Flug muss der Drohnenführer die Wetterbedingungen, den Zustand der Drohne und den Flugbereich prüfen.</li>
+            <li>Der Drohnenführer muss eine direkte Sichtlinie zur Drohne haben (VLOS – Visual Line of Sight).</li>
+        </ul>
+
+        <p><strong>Flugverbotszonen und Luftraumregeln:</strong></p>
+        <ul>
+            <li>Flugverbotszonen umfassen Gebiete wie Flughäfen, Regierungsgebäude und militärische Einrichtungen.</li>
+            <li>Der Luftraum ist in verschiedene Kategorien unterteilt (A bis G), und für einige Bereiche ist eine Genehmigung erforderlich, um dort fliegen zu dürfen.</li>
+            <li>Die maximale Flughöhe beträgt 120 Meter (über Grund).</li>
+        </ul>
+
+        <p><strong>Datenschutz:</strong></p>
+        <ul>
+            <li>Der Datenschutz muss jederzeit eingehalten werden, besonders bei der Aufnahme von Fotos und Videos.</li>
+            <li>Personen dürfen nur mit deren Zustimmung gefilmt werden, und der Einsatz von Drohnen in privaten Bereichen ist streng geregelt.</li>
+        </ul>
+
+        <p><strong>Sicherheit und Versicherung:</strong></p>
+        <ul>
+            <li>Die Haftpflichtversicherung deckt Schäden bei Dritten (Personen und Sachen) ab, nicht jedoch eigene Schäden an der Drohne.</li>
+            <li>Der Drohnenpilot sollte vor jedem Flug sicherstellen, dass er sich in einem gesundheitlich geeigneten Zustand befindet und alle erforderlichen Versicherungen abgeschlossen hat.</li>
+        </ul>
+
+        <p><strong>Vorrangregeln im Luftraum:</strong></p>
+        <ul>
+            <li>Bemannte Luftfahrzeuge haben immer Vorrang.</li>
+            <li>Niemals rücksichtslos und in die Nähe anderer Luftfahrzeuge fliegen.</li>
+            <li>Landende Luftfahrzeuge haben Vorrang vor startenden.</li>
+        </ul>
+
+        <p><strong>Besonderheiten am Boden:</strong></p>
+        <ul>
+            <li>UAS-Betrieb ist nicht erlaubt über Menschenansammlungen, bei Notfalleinsätzen oder in Bereichen, in denen ein erhöhtes Risiko besteht.</li>
+            <li>Der Pilot muss jederzeit sicherstellen, dass keine unbeteiligten Personen gefährdet werden.</li>
+        </ul>
+    </div>
+    <!-- Modul 2 Container -->
+    <div id="modul2" class="content">
+        <h2>Modul 2: Menschliches Leistungsvermögen</h2>
+        <p><strong>Gesundheit und Fitness</strong></p>
+        <ul>
+            <li>Krankheit: Bereits bei geringen Symptomen kann es zu Einschränkungen kommen. Bei Auftreten während des Fluges: sofort landen.</li>
+            <li>Alkohol: Kein Alkohol vor dem Flug, mindestens 8 Stunden vorher aufhören. Kommerzielle Grenze liegt bei 0,2 Promille.</li>
+            <li>Medikamente: Die Einnahme von Medikamenten sollte immer sorgfältig abgewogen werden. Neben- und Wechselwirkungen berücksichtigen.</li>
+            <li>Müdigkeit: 17 Stunden ohne Schlaf entsprechen 0,5 Promille, 23 Stunden ohne Schlaf 1,0 Promille.</li>
+        </ul>
+
+        <p><strong>„I'M SAFE“ Checkliste</strong></p>
+        <ul>
+            <li><strong>Illness (Krankheit)</strong>: Bestehen Symptome, die die Steuerungsfähigkeit beeinflussen?</li>
+            <li><strong>Medication (Medikamente)</strong>: Nehmen Sie aktuell Medikamente?</li>
+            <li><strong>Stress</strong>: Stehen Sie unter Stress oder psychischem Druck?</li>
+            <li><strong>Alcohol</strong>: Haben Sie in den letzten 8-24 Stunden Alkohol konsumiert?</li>
+            <li><strong>Fatigue (Müdigkeit)</strong>: Hatten Sie ausreichend Schlaf?</li>
+            <li><strong>Emotion</strong>: Haben Sie ausreichend Abstand zu extremen Gefühlen?</li>
+        </ul>
+
+        <p><strong>Situational Awareness (Situationsbewusstsein)</strong></p>
+        <ul>
+            <li>Das „große Bild“ der Situation erfassen und wissen, was wahrscheinlich als Nächstes kommt.</li>
+            <li>Persönliche Faktoren wie Müdigkeit, Stress und Belastung können das Situationsbewusstsein stark beeinträchtigen.</li>
+            <li>Umweltfaktoren wie Wetter, Sicht und Ablenkungen sind ebenfalls entscheidend.</li>
+            <li>Systemfaktoren wie die Komplexität des UAS und die Automatisierung beeinflussen ebenfalls die Wahrnehmung.</li>
+        </ul>
+
+        <p><strong>Einschätzung: Höhe und Entfernung</strong></p>
+        <ul>
+            <li>Hohe Genauigkeit bei kurzer Distanz, zunehmende Unzuverlässigkeit bei größerer Entfernung.</li>
+            <li>Verwendung von GPS zur Unterstützung, wenn möglich.</li>
+            <li>Vergleich mit bekannten Referenzobjekten.</li>
+        </ul>
+
+        <p><strong>Einschätzung: Geschwindigkeit</strong></p>
+        <ul>
+            <li>Erfahrung ist entscheidend: frühere Beobachtungen als Referenz nutzen.</li>
+            <li>Es ist einfacher, Bewegungen senkrecht zur Flugrichtung einzuschätzen als annähernd parallel.</li>
+        </ul>
+
+        <p><strong>Dunkelheit und Anpassung der Augen</strong></p>
+        <ul>
+            <li>Es dauert ca. 30 Minuten, bis sich die Augen vollständig an die Dunkelheit angepasst haben.</li>
+            <li>Grüne Lichtquellen erscheinen heller und näher, rote Lichtquellen dunkler und weiter entfernt.</li>
+        </ul>
+    </div>
+    <!-- Modul 3 Container -->
+    <div id="modul3" class="content">
+        <h2>Modul 3: Betriebliche Verfahren</h2>
+        <p><strong>Flugvorbereitung und Flugüberwachung</strong></p>
+        <ul>
+            <li>Vorbereitung einen Tag vorher: Alle erforderlichen Papiere und Fitness überprüfen.</li>
+            <li>Verwende die „I'M SAFE“-Checkliste: Illness (Krankheit), Medication (Medikamente), Stress, Alcohol (Alkohol), Fatigue (Müdigkeit), Emotion.</li>
+            <li>Luftraum, NOTAMs (NOtice To AirMen) und Wetter prüfen. Aktuelle geografische Zonen berücksichtigen und notwendige Genehmigungen einholen.</li>
+            <li>Wind und Wetterentwicklung überwachen. Windmesser verwenden, da Windgeschwindigkeit mit der Höhe zunimmt.</li>
+            <li>Fluggebiet und Umgebung auf Hindernisse prüfen, Begehung bei unübersichtlichem Gelände durchführen.</li>
+        </ul>
+
+        <p><strong>UAS und Ausrüstung</strong></p>
+        <ul>
+            <li>Überprüfe das UAS auf Beschädigungen, Verschmutzungen und Befestigungen.</li>
+            <li>Maximale Abflugmasse (MTOM) und Schwerpunktberechnung beachten.</li>
+            <li>GNSS-Empfang und Kompass kalibrieren, wenn notwendig.</li>
+            <li>Funktionsprüfung des UAS und der Nutzlast durchführen.</li>
+        </ul>
+
+        <p><strong>Startverfahren</strong></p>
+        <ul>
+            <li>Prüfe, ob die Checkliste vollständig und positiv abgeschlossen ist.</li>
+            <li>Vergewissere dich, dass die Startfläche eben und frei von Hindernissen ist.</li>
+            <li>Durchführung der Funktionsprüfung für Telemetrie, Steuerung und Nutzlast.</li>
+        </ul>
+
+        <p><strong>Normalverfahren während des Fluges</strong></p>
+        <ul>
+            <li>Überwache die Batterieentladekurve und lande mit ausreichender Reserve.</li>
+            <li>UAS-Position und Luftraum stets überwachen, wenn möglich zu zweit.</li>
+            <li>Lass dich nicht durch Dritte ablenken!</li>
+        </ul>
+
+        <p><strong>Risiken und Notfallverfahren</strong></p>
+        <ul>
+            <li>Vermeide Überflüge von Personen und sorge dafür, dass das UAS stets in Sicht bleibt (VLOS).</li>
+            <li>Bei plötzlicher Wetterverschlechterung oder technischer Störung: schnellstmöglich landen.</li>
+            <li>Aktiviere den „Return to Home“-Modus (RTH) bei Verlust der Funkverbindung oder kritischem Batteriestand.</li>
+        </ul>
+
+        <p><strong>Nachbereitung und Dokumentation</strong></p>
+        <ul>
+            <li>Überprüfe das UAS nach der Landung auf Beschädigungen und reinige es gegebenenfalls.</li>
+            <li>Dokumentiere den Flug im UAS-Flugbuch: Datum, UAS-Typ, Start- und Landezeit, besondere Vorkommnisse.</li>
+            <li>Speichere Flugdaten extern, einschließlich Wegpunkte, Flughöhen und Flugstrecken.</li>
+        </ul>
+
+        <p><strong>Notfälle und Abweichungen</strong></p>
+        <ul>
+            <li>Bei unvorhergesehenen Ereignissen wie Überflügen von unbeteiligten Personen oder plötzlichen Wetteränderungen: Notlandung oder Sicherheitslandung einleiten.</li>
+            <li>Bei Verlust des UAS („Fly-away“) aktiviere den RTH-Modus und konsultiere das Handbuch.</li>
+        </ul>
+    </div>
+    <!-- Modul 4 Container -->
+    <div id="modul4" class="content">
+        <h2>Modul 4: Allgemeine UAS-Kunde</h2>
+        <p><strong>Flugmodi und Grundlagen des Fliegens</strong></p>
+        <ul>
+            <li>Unbeschleunigter Horizontalflug: Kräftegleichgewicht ohne resultierende Kraft, Störung des Gleichgewichts zur Steuerung.</li>
+            <li>Bewegungsrichtungen: Längsachse (Rollen – Roll), Querachse (Nicken – Pitch), Hochachse (Gieren – Yaw).</li>
+        </ul>
+
+        <p><strong>Hauptkomponenten</strong></p>
+        <ul>
+            <li>Drehzahlregler, Propeller, Bordcomputer, Antriebssystem, Sensoren, Steuerung und Telemetrie.</li>
+            <li>ESC (Electronic Speed Controller) regelt die Drehgeschwindigkeit der Propeller.</li>
+            <li>Firmware muss regelmäßig aktualisiert werden.</li>
+        </ul>
+
+        <p><strong>Beschränkungen</strong></p>
+        <ul>
+            <li>Maximale Flugzeit, max. 15 m/s Windgeschwindigkeit, UAS muss im Sichtbereich (VLOS) bleiben.</li>
+            <li>Vermeide Flüge bei Regen, Hagel oder Schnee, da Propeller vereisen und Motoren überhitzen können.</li>
+        </ul>
+
+        <p><strong>Geo-Systeme</strong></p>
+        <ul>
+            <li>Geo-Awareness: Warnt bei potenziellen Luftraumverstößen.</li>
+            <li>Geo-Fence: Virtueller Zaun, der das UAS stoppt oder innerhalb eines Gebiets hält.</li>
+        </ul>
+
+        <p><strong>Wartung des UAS</strong></p>
+        <ul>
+            <li>Regelmäßige Überprüfung der Struktur auf Risse und Propeller auf Schäden.</li>
+            <li>Motoren auf Widerstand prüfen und ggf. reinigen.</li>
+            <li>Softwareupdates regelmäßig einspielen und Batterien auf Beschädigungen prüfen.</li>
+        </ul>
+    </div>
+    <!-- Nachricht über das Öffnen des Moduls -->
+    <p id="moduleMessage" class="module-message"></p>
+</div>
+
+<script>
+    function toggleVisibility(moduleId) {
+        var element = document.getElementById(moduleId);
+        if (element.classList.contains('show')) {
+            element.classList.remove('show');
+        } else {
+            element.classList.add('show');
+        }
+    }
+</script>
+<script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(function(registration) {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(function(error) {
+          console.log('Service Worker registration failed:', error);
+        });
+    }
+  </script>
+  
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drohnenführerschein Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #34495e;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #1abc9c;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #16a085;
+        }
+    </style>
+</head>
+<body>
+
+  <!-- Wissen Inhalt -->
+  <div id="wissen" class="content">
+    <h2>Teste dein Wissen</h2>
+    <p>Hier kannst du Fragen und Antworten durchgehen, um dich optimal vorzubereiten.</p>
+           
+    
+        <!-- Frage 1 -->
+        <p><strong>Frage 1:</strong> Welche Bedingungen können die VLOS-Bedingungen negativ beeinflussen?<br>
+        <strong>Richtige Antwort:</strong> Ein sich näherndes Gewitter</p>
+    
+        <!-- Frage 2 -->
+        <p><strong>Frage 2:</strong> Welche Bewegungsrichtung ist besonders schwierig einzuschätzen?<br>
+        <strong>Richtige Antwort:</strong> Bewegungen auf den Piloten zu oder weg von ihm</p>
+    
+        <!-- Frage 3 -->
+        <p><strong>Frage 3:</strong> Nach dem Start eines UAS sollten in einer Flughöhe von etwa 2 m folgende Punkte überprüft werden:<br>
+        <strong>Richtige Antwort:</strong> Die Telemetrie, die Nutzlast und der Controller</p>
+    
+        <!-- Frage 4 -->
+        <p><strong>Frage 4:</strong> Wer ist für die sichere Flugdurchführung verantwortlich?<br>
+        <strong>Richtige Antwort:</strong> Der Fernpilot</p>
+    
+        <!-- Frage 5 -->
+        <p><strong>Frage 5:</strong> Wenn vormittags das Wetter für einen Flug geprüft wird, ist ein weiterer Wettercheck notwendig, wenn:<br>
+        <strong>Richtige Antwort:</strong> Ein erneuter Wettercheck kurz vor dem Abflug notwendig ist</p>
+    
+        <!-- Frage 6 -->
+        <p><strong>Frage 6:</strong> Unter Luftrisiko versteht man, wenn:<br>
+        <strong>Richtige Antwort:</strong> Ein UAS mit anderen Luftraumnutzern kollidiert</p>
+    
+        <!-- Frage 7 -->
+        <p><strong>Frage 7:</strong> Welche der folgenden Aussagen über die Grundlagen des Fliegens ist korrekt?<br>
+        <strong>Richtige Antwort:</strong> Die Form des Flügels kann gekrümmt sein und verursacht unterschiedliche Strömungsgeschwindigkeiten</p>
+    
+        <!-- Frage 8 -->
+        <p><strong>Frage 8:</strong> Welche Aussage über die Telemetrie ist richtig?<br>
+        <strong>Richtige Antwort:</strong> Die Telemetrie sendet Steuersignale und erhält Informationen über den Status des UAS</p>
+    
+        <!-- Frage 9 -->
+        <p><strong>Frage 9:</strong> Welche Wetterbedingungen können den Flugbetrieb eines UAS einschränken?<br>
+        <strong>Richtige Antwort:</strong> Nieselregen und Schneefall</p>
+    
+        <!-- Frage 10 -->
+        <p><strong>Frage 10:</strong> Welche Aussage über das Verhältnis zwischen Wellenlänge und Frequenz einer elektromagnetischen Welle ist korrekt?<br>
+        <strong>Richtige Antwort:</strong> Die Frequenz ist umgekehrt proportional zur Wellenlänge</p>
+    
+        <!-- Frage 11 -->
+        <p><strong>Frage 11:</strong> Welche Flughöhe darf in der offenen Kategorie nicht überschritten werden?<br>
+        <strong>Richtige Antwort:</strong> 120 Meter</p>
+    
+        <!-- Frage 12 -->
+        <p><strong>Frage 12:</strong> Wer hat Vorrang im Luftraum?<br>
+        <strong>Richtige Antwort:</strong> Bemannte Luftfahrzeuge</p>
+    
+        <!-- Frage 13 -->
+        <p><strong>Frage 13:</strong> Was bedeutet die Abkürzung GNSS?<br>
+        <strong>Richtige Antwort:</strong> Globales Navigationssatellitensystem</p>
+    
+        <!-- Frage 14 -->
+        <p><strong>Frage 14:</strong> In welchem Fall muss der Fernpilot den Flug sofort abbrechen?<br>
+        <strong>Richtige Antwort:</strong> Wenn unbeteiligte Personen den Flugbereich betreten</p>
+    
+        <!-- Frage 15 -->
+        <p><strong>Frage 15:</strong> Welche der folgenden Aussagen beschreibt eine sichere Flugvorbereitung?<br>
+        <strong>Richtige Antwort:</strong> Wetterbedingungen, Luftraumbeschränkungen und den Zustand des UAS überprüfen</p>
+    
+        <!-- Frage 16 -->
+        <p><strong>Frage 16:</strong> Was ist ein NOTAM?<br>
+        <strong>Richtige Antwort:</strong> Eine Mitteilung über temporäre Luftraumbeschränkungen</p>
+    
+        <!-- Frage 17 -->
+        <p><strong>Frage 17:</strong> Welche maximale Windgeschwindigkeit darf für sichere Drohnenflüge nicht überschritten werden?<br>
+        <strong>Richtige Antwort:</strong> 15 m/s</p>
+    
+        <!-- Frage 18 -->
+        <p><strong>Frage 18:</strong> Was bedeutet BVLOS?<br>
+        <strong>Richtige Antwort:</strong> Betrieb außerhalb der Sichtlinie</p>
+    
+        <!-- Frage 19 -->
+        <p><strong>Frage 19:</strong> Wie muss der Drohnenpilot handeln, wenn eine Person im Flugbereich auftaucht?<br>
+        <strong>Richtige Antwort:</strong> Sofort landen oder ausweichen</p>
+    
+        <!-- Frage 20 -->
+        <p><strong>Frage 20:</strong> Was bedeutet das Kürzel „BVLOS“ im Drohnenbetrieb?<br>
+        <strong>Richtige Antwort:</strong> Betrieb außerhalb der Sichtweite</p>
+        
+        <!-- Fragen 21 bis 40 -->
+
+        <!-- Frage 21 -->
+        <p><strong>Frage 21:</strong> Welche Wetterbedingungen können den Flugbetrieb eines UAS beeinträchtigen?<br>
+        <strong>Richtige Antwort:</strong> Nieselregen und Schneefall</p>
+    
+        <!-- Frage 22 -->
+        <p><strong>Frage 22:</strong> Was bedeutet die Abkürzung VLOS?<br>
+        <strong>Richtige Antwort:</strong> Visual Line of Sight</p>
+    
+        <!-- Frage 23 -->
+        <p><strong>Frage 23:</strong> Was ist ein NOTAM?<br>
+        <strong>Richtige Antwort:</strong> Eine Mitteilung über temporäre Luftraumbeschränkungen</p>
+    
+        <!-- Frage 24 -->
+        <p><strong>Frage 24:</strong> Was sollte nach dem Start eines UAS überprüft werden?<br>
+        <strong>Richtige Antwort:</strong> Die Telemetrie, Nutzlast und der Controller</p>
+    
+        <!-- Frage 25 -->
+        <p><strong>Frage 25:</strong> Wer ist für die sichere Flugdurchführung verantwortlich?<br>
+        <strong>Richtige Antwort:</strong> Der Fernpilot</p>
+    
+    <!-- Frage 26 -->
+    <p><strong>Frage 26:</strong> Wann ist ein erneuter Wettercheck notwendig?<br>
+    <strong>Richtige Antwort:</strong> Kurz vor dem Abflug</p>
+    
+    <!-- Frage 27 -->
+    <p><strong>Frage 27:</strong> Unter Luftrisiko versteht man, wenn...<br>
+    <strong>Richtige Antwort:</strong> Ein UAS mit anderen Luftraumnutzern kollidiert</p>
+    
+    <!-- Frage 28 -->
+    <p><strong>Frage 28:</strong> Welche Aussage über die Telemetrie ist korrekt?<br>
+    <strong>Richtige Antwort:</strong> Die Telemetrie sendet Steuersignale und erhält Informationen über den Status des UAS</p>
+    
+    <!-- Frage 29 -->
+    <p><strong>Frage 29:</strong> Welche Frequenzbereiche sind für den Drohnenbetrieb relevant?<br>
+    <strong>Richtige Antwort:</strong> 2,4 GHz und 5,8 GHz</p>
+    
+    <!-- Frage 30 -->
+    <p><strong>Frage 30:</strong> Welche Flughöhe darf in der offenen Kategorie nicht überschritten werden?<br>
+    <strong>Richtige Antwort:</strong> 120 Meter</p>
+    
+    <!-- Frage 31 -->
+    <p><strong>Frage 31:</strong> Was bedeutet GNSS?<br>
+    <strong>Richtige Antwort:</strong> Globales Navigationssatellitensystem</p>
+    
+    <!-- Frage 32 -->
+    <p><strong>Frage 32:</strong> Was bedeutet BVLOS?<br>
+    <strong>Richtige Antwort:</strong> Betrieb außerhalb der Sichtlinie</p>
+    
+    <!-- Frage 33 -->
+    <p><strong>Frage 33:</strong> Welche maximale Windgeschwindigkeit darf für sichere Drohnenflüge nicht überschritten werden?<br>
+    <strong>Richtige Antwort:</strong> 15 m/s</p>
+    
+    <!-- Frage 34 -->
+    <p><strong>Frage 34:</strong> Welche Strömungsgeschwindigkeiten wirken auf die Ober- und Unterseite eines gekrümmten Flügels?<br>
+    <strong>Richtige Antwort:</strong> Die Luft strömt schneller über die gekrümmte Oberseite</p>
+    
+    <!-- Frage 35 -->
+    <p><strong>Frage 35:</strong> Wann muss der Fernpilot den Flug sofort abbrechen?<br>
+    <strong>Richtige Antwort:</strong> Wenn unbeteiligte Personen den Flugbereich betreten</p>
+    
+    <!-- Frage 36 -->
+    <p><strong>Frage 36:</strong> Welche Wetterbedingungen können den Flugbetrieb einschränken?<br>
+    <strong>Richtige Antwort:</strong> Nieselregen und Schneefall</p>
+    
+    <!-- Frage 37 -->
+    <p><strong>Frage 37:</strong> Wann ist ein erneuter Wettercheck notwendig?<br>
+    <strong>Richtige Antwort:</strong> Kurz vor dem Abflug</p>
+    
+    <!-- Frage 38 -->
+    <p><strong>Frage 38:</strong> Wer ist für die sichere Flugdurchführung verantwortlich?<br>
+    <strong>Richtige Antwort:</strong> Der Fernpilot</p>
+    
+    <!-- Frage 39 -->
+    <p><strong>Frage 39:</strong> Was ist ein UAS?<br>
+    <strong>Richtige Antwort:</strong> Unmanned Aircraft System</p>
+    
+    <!-- Frage 40 -->
+    <p><strong>Frage 40:</strong> Welche Aussage über das Verhältnis von Wellenlänge und Frequenz ist korrekt?<br>
+    <strong>Richtige Antwort:</strong> Die Frequenz ist umgekehrt proportional zur Wellenlänge</p>
+<!-- Fragen 41 bis 60 -->
+
+<!-- Frage 41 -->
+<p><strong>Frage 41:</strong> Was ist die maximale Flughöhe für Drohnen in der offenen Kategorie in Europa?<br>
+    <strong>Richtige Antwort:</strong> 120 Meter</p>
+    
+    <!-- Frage 42 -->
+    <p><strong>Frage 42:</strong> Welche Genehmigung wird benötigt, um in der spezifischen Kategorie zu fliegen?<br>
+    <strong>Richtige Antwort:</strong> Betriebsbewilligung der zuständigen Behörde</p>
+    
+    <!-- Frage 43 -->
+    <p><strong>Frage 43:</strong> Wie oft sollten Drohnenpropeller auf Beschädigungen überprüft werden?<br>
+    <strong>Richtige Antwort:</strong> Vor jedem Flug</p>
+    
+    <!-- Frage 44 -->
+    <p><strong>Frage 44:</strong> Welche Drohnenkategorie erlaubt das Fliegen über Menschenansammlungen?<br>
+    <strong>Richtige Antwort:</strong> Zulassungspflichtige Kategorie mit Sondergenehmigung</p>
+    
+    <!-- Frage 45 -->
+    <p><strong>Frage 45:</strong> Was ist die wichtigste Aufgabe des Drohnenführers während des Flugs?<br>
+    <strong>Richtige Antwort:</strong> Die Kontrolle und Überwachung der Drohne</p>
+    
+    <!-- Frage 46 -->
+    <p><strong>Frage 46:</strong> Wie sollte ein Drohnenpilot auf plötzliche Windböen reagieren?<br>
+    <strong>Richtige Antwort:</strong> Die Drohne sicher landen</p>
+    
+    <!-- Frage 47 -->
+    <p><strong>Frage 47:</strong> Was ist der größte Risikofaktor für den Drohnenbetrieb in städtischen Gebieten?<br>
+    <strong>Richtige Antwort:</strong> Hindernisse wie Gebäude und Bäume</p>
+    
+    <!-- Frage 48 -->
+    <p><strong>Frage 48:</strong> Was versteht man unter dem Begriff "Failsafe" bei Drohnen?<br>
+    <strong>Richtige Antwort:</strong> Ein Sicherheitsmechanismus, der bei Problemen die Drohne sicher landen lässt</p>
+    
+    <!-- Frage 49 -->
+    <p><strong>Frage 49:</strong> Was bedeutet der Begriff „BVLOS“ im Zusammenhang mit Drohnenoperationen?<br>
+    <strong>Richtige Antwort:</strong> Betrieb außerhalb der Sichtweite</p>
+    
+    <!-- Frage 50 -->
+    <p><strong>Frage 50:</strong> Welche Informationen sollten vor dem Drohnenflug in einer Flugvorbereitung überprüft werden?<br>
+    <strong>Richtige Antwort:</strong> Wetterbedingungen, Flugbeschränkungen und Zustand der Drohne</p>
+    
+    <!-- Frage 51 -->
+    <p><strong>Frage 51:</strong> Was ist die maximale Flughöhe in der offenen Kategorie ohne Genehmigung?<br>
+    <strong>Richtige Antwort:</strong> 120 Meter</p>
+    
+    <!-- Frage 52 -->
+    <p><strong>Frage 52:</strong> Wann darf eine Drohne über unbeteiligten Personen fliegen?<br>
+    <strong>Richtige Antwort:</strong> Nur mit einer speziellen Genehmigung</p>
+    
+    <!-- Frage 53 -->
+    <p><strong>Frage 53:</strong> Was bedeutet der Begriff „VLOS“ bei Drohnenoperationen?<br>
+    <strong>Richtige Antwort:</strong> Der Pilot muss die Drohne jederzeit sehen können</p>
+    
+    <!-- Frage 54 -->
+    <p><strong>Frage 54:</strong> Was ist vor jedem Drohnenflug immer zu überprüfen?<br>
+    <strong>Richtige Antwort:</strong> Wetterbedingungen und Flugbereich</p>
+    
+    <!-- Frage 55 -->
+    <p><strong>Frage 55:</strong> Wie kann ein Drohnenpilot eine sichere Landung bei schwachem GPS-Signal gewährleisten?<br>
+    <strong>Richtige Antwort:</strong> Manuelle Steuerung übernehmen</p>
+    
+    <!-- Frage 56 -->
+    <p><strong>Frage 56:</strong> Was ist ein Geo-Fence im Drohnenbetrieb?<br>
+    <strong>Richtige Antwort:</strong> Ein virtuelles System, das den Flugbereich der Drohne einschränkt</p>
+    
+    <!-- Frage 57 -->
+    <p><strong>Frage 57:</strong> Wie oft sollte der Drohnenpilot die Firmware der Drohne aktualisieren?<br>
+    <strong>Richtige Antwort:</strong> Regelmäßig, je nach Herstellerempfehlung</p>
+    
+    <!-- Frage 58 -->
+    <p><strong>Frage 58:</strong> Welche Kategorie von Drohnen erfordert keine spezielle Genehmigung für den Betrieb?<br>
+    <strong>Richtige Antwort:</strong> Offene Kategorie</p>
+    
+    <!-- Frage 59 -->
+    <p><strong>Frage 59:</strong> Was ist der „Return to Home“-Modus bei Drohnen?<br>
+    <strong>Richtige Antwort:</strong> Ein Modus, der die Drohne automatisch zum Startpunkt zurückfliegen lässt</p>
+    
+    <!-- Frage 60 -->
+    <p><strong>Frage 60:</strong> Wie verhält sich eine Drohne, wenn der Akku fast leer ist?<br>
+    <strong>Richtige Antwort:</strong> Sie kehrt automatisch zum Startpunkt zurück</p>
+<!-- Fragen 61 bis 80 -->
+
+<!-- Frage 61 -->
+<p><strong>Frage 61:</strong> Was muss ein Drohnenpilot tun, wenn er die Verbindung zur Drohne verliert?<br>
+    <strong>Richtige Antwort:</strong> Den „Return to Home“-Modus aktivieren, wenn nicht automatisch</p>
+    
+    <!-- Frage 62 -->
+    <p><strong>Frage 62:</strong> Welche Drohnenkategorie erfordert eine detaillierte Risikobewertung vor dem Flug?<br>
+    <strong>Richtige Antwort:</strong> Spezifische Kategorie</p>
+    
+    <!-- Frage 63 -->
+    <p><strong>Frage 63:</strong> Was bedeutet die Abkürzung UAS im Drohnenbetrieb?<br>
+    <strong>Richtige Antwort:</strong> Unmanned Aircraft System</p>
+    
+    <!-- Frage 64 -->
+    <p><strong>Frage 64:</strong> Was sollte ein Drohnenpilot tun, wenn sich während des Fluges eine Notlage entwickelt?<br>
+    <strong>Richtige Antwort:</strong> Die Drohne sicher landen</p>
+    
+    <!-- Frage 65 -->
+    <p><strong>Frage 65:</strong> Was ist eine „No-Fly-Zone“ im Drohnenbetrieb?<br>
+    <strong>Richtige Antwort:</strong> Ein Bereich, in dem das Fliegen von Drohnen verboten ist</p>
+    
+    <!-- Frage 66 -->
+    <p><strong>Frage 66:</strong> Wann ist eine Drohne als „unbemanntes Luftfahrzeug“ (UAS) klassifiziert?<br>
+    <strong>Richtige Antwort:</strong> Wenn sie ohne direkten Eingriff eines Piloten betrieben wird</p>
+    
+    <!-- Frage 67 -->
+    <p><strong>Frage 67:</strong> Welche Arten von Drohnenflügen benötigen eine spezielle Genehmigung?<br>
+    <strong>Richtige Antwort:</strong> Flüge in der spezifischen Kategorie</p>
+    
+    <!-- Frage 68 -->
+    <p><strong>Frage 68:</strong> Was ist der Unterschied zwischen der offenen und der spezifischen Kategorie im Drohnenbetrieb?<br>
+    <strong>Richtige Antwort:</strong> Die spezifische Kategorie erfordert eine Risikoanalyse und Genehmigung</p>
+    
+    <!-- Frage 69 -->
+    <p><strong>Frage 69:</strong> Was bedeutet der Begriff „LOS“ im Zusammenhang mit Drohnenflügen?<br>
+    <strong>Richtige Antwort:</strong> Line of Sight (Sichtlinie zum Piloten)</p>
+    
+    <!-- Frage 70 -->
+    <p><strong>Frage 70:</strong> Welche Haftpflichtversicherung ist für den Betrieb von Drohnen erforderlich?<br>
+    <strong>Richtige Antwort:</strong> Eine spezielle Drohnen-Haftpflichtversicherung</p>
+    
+    <!-- Frage 71 -->
+    <p><strong>Frage 71:</strong> In welchem Fall darf eine Drohne ohne Genehmigung betrieben werden?<br>
+    <strong>Richtige Antwort:</strong> In der offenen Kategorie unter Einhaltung der Vorschriften</p>
+    
+    <!-- Frage 72 -->
+    <p><strong>Frage 72:</strong> In welchem Fall darf eine Drohne in der Nähe von Flughäfen betrieben werden?<br>
+    <strong>Richtige Antwort:</strong> Nur mit einer speziellen Erlaubnis</p>
+    
+    <!-- Frage 73 -->
+    <p><strong>Frage 73:</strong> Welche Vorschrift regelt den Drohnenbetrieb in Europa?<br>
+    <strong>Richtige Antwort:</strong> EU-Verordnung 2019/947</p>
+    
+    <!-- Frage 74 -->
+    <p><strong>Frage 74:</strong> Was muss ein Drohnenpilot tun, wenn er eine temporäre Flugverbotszone betritt?<br>
+    <strong>Richtige Antwort:</strong> Den Flug sofort einstellen</p>
+    
+    <!-- Frage 75 -->
+    <p><strong>Frage 75:</strong> Was ist ein „U-Space“ im Zusammenhang mit Drohnenflügen?<br>
+    <strong>Richtige Antwort:</strong> Ein regulierter Luftraum speziell für Drohnenflüge</p>
+    
+    <!-- Frage 76 -->
+    <p><strong>Frage 76:</strong> Welche Kategorie von Drohnenflügen erlaubt den Einsatz autonomer Drohnen?<br>
+    <strong>Richtige Antwort:</strong> Spezifische Kategorie</p>
+    
+    <!-- Frage 77 -->
+    <p><strong>Frage 77:</strong> Welche Genehmigung ist erforderlich, um in der zulassungspflichtigen Kategorie zu fliegen?<br>
+    <strong>Richtige Antwort:</strong> Eine Betriebsgenehmigung</p>
+    
+    <!-- Frage 78 -->
+    <p><strong>Frage 78:</strong> Was ist die minimale Sichtweite, die für den Betrieb von Drohnen in der offenen Kategorie erforderlich ist?<br>
+    <strong>Richtige Antwort:</strong> Direkte Sichtlinie zur Drohne (VLOS)</p>
+    
+    <!-- Frage 79 -->
+    <p><strong>Frage 79:</strong> In welchem Fall darf ein Drohnenpilot den Flug fortsetzen, obwohl die Wetterbedingungen schlechter werden?<br>
+    <strong>Richtige Antwort:</strong> Der Flug sollte abgebrochen werden, da sich die Wetterbedingungen verschlechtern</p>
+    
+    <!-- Frage 80 -->
+    <p><strong>Frage 80:</strong> Welche maximale Geschwindigkeit ist für Drohnen in der offenen Kategorie erlaubt?<br>
+    <strong>Richtige Antwort:</strong> 19 m/s</p>
+    <!-- Fragen 81 bis 100 -->
+
+    <!-- Frage 81 -->
+    <p><strong>Frage 81:</strong> In welchem Fall darf eine Drohne in der Nähe von Flughäfen betrieben werden?<br>
+    <strong>Richtige Antwort:</strong> Nur mit einer speziellen Erlaubnis</p>
+    
+    <!-- Frage 82 -->
+    <p><strong>Frage 82:</strong> Was ist die Rolle des „Registrierungsnummern-Systems“ im Drohnenbetrieb?<br>
+    <strong>Richtige Antwort:</strong> Es identifiziert den Betreiber der Drohne</p>
+    
+    <!-- Frage 83 -->
+    <p><strong>Frage 83:</strong> In welchem Fall ist das Fliegen einer Drohne über 25 Kilogramm erlaubt?<br>
+    <strong>Richtige Antwort:</strong> Nur mit einer Sondergenehmigung</p>
+    
+    <!-- Frage 84 -->
+    <p><strong>Frage 84:</strong> Wie lange ist die Drohnenregistrierung in Europa gültig?<br>
+    <strong>Richtige Antwort:</strong> 5 Jahre</p>
+    
+    <!-- Frage 85 -->
+    <p><strong>Frage 85:</strong> Welche maximale Flughöhe darf ohne Genehmigung nicht überschritten werden?<br>
+    <strong>Richtige Antwort:</strong> 120 Meter</p>
+    
+    <!-- Frage 86 -->
+    <p><strong>Frage 86:</strong> Welche Maßnahmen sollte ein Drohnenpilot ergreifen, wenn während des Flugs das GPS-Signal verloren geht?<br>
+    <strong>Richtige Antwort:</strong> Die Drohne manuell steuern und sicher landen</p>
+    
+    <!-- Frage 87 -->
+    <p><strong>Frage 87:</strong> In welchem Fall darf eine Drohne über Menschen fliegen?<br>
+    <strong>Richtige Antwort:</strong> Nur mit einer speziellen Genehmigung</p>
+    
+    <!-- Frage 88 -->
+    <p><strong>Frage 88:</strong> Was bedeutet die Abkürzung SORA im Drohnenbetrieb?<br>
+    <strong>Richtige Antwort:</strong> Specific Operations Risk Assessment</p>
+    
+    <!-- Frage 89 -->
+    <p><strong>Frage 89:</strong> Welche Drohnenoperationen erfordern immer eine Risikoanalyse?<br>
+    <strong>Richtige Antwort:</strong> Spezifische Kategorie</p>
+    
+    <!-- Frage 90 -->
+    <p><strong>Frage 90:</strong> Welche Technologie wird häufig verwendet, um Drohnen in der Luft zu lokalisieren?<br>
+    <strong>Richtige Antwort:</strong> GPS</p>
+    
+    <!-- Frage 91 -->
+    <p><strong>Frage 91:</strong> In welchem Fall muss der Drohnenpilot die direkte Sichtlinie zur Drohne (VLOS) einhalten?<br>
+    <strong>Richtige Antwort:</strong> In der offenen Kategorie</p>
+    
+    <!-- Frage 92 -->
+    <p><strong>Frage 92:</strong> Was sollte der Drohnenpilot tun, wenn eine unbeteiligte Person den Flugbereich betritt?<br>
+    <strong>Richtige Antwort:</strong> Sofort den Flug abbrechen und die Drohne landen</p>
+    
+    <!-- Frage 93 -->
+    <p><strong>Frage 93:</strong> In welchem Fall ist eine Drohnenversicherung verpflichtend?<br>
+    <strong>Richtige Antwort:</strong> In allen Fällen, unabhängig vom Gewicht der Drohne</p>
+    
+    <!-- Frage 94 -->
+    <p><strong>Frage 94:</strong> Was ist die maximale Geschwindigkeit einer Drohne in der offenen Kategorie?<br>
+    <strong>Richtige Antwort:</strong> 19 m/s</p>
+    
+    <!-- Frage 95 -->
+    <p><strong>Frage 95:</strong> Welche Flugkategorie erlaubt Flüge über Menschenansammlungen?<br>
+    <strong>Richtige Antwort:</strong> Zulassungspflichtige Kategorie</p>
+    
+    <!-- Frage 96 -->
+    <p><strong>Frage 96:</strong> Was muss ein Drohnenpilot tun, wenn er eine Flugbeschränkungszone betritt?<br>
+    <strong>Richtige Antwort:</strong> Den Flug sofort abbrechen und die Drohne sicher landen</p>
+    
+    <!-- Frage 97 -->
+    <p><strong>Frage 97:</strong> Was ist der wichtigste Faktor für einen sicheren Drohnenbetrieb?<br>
+    <strong>Richtige Antwort:</strong> Das Einhalten aller geltenden Vorschriften und Sicherheitsregeln</p>
+    
+    <!-- Frage 98 -->
+    <p><strong>Frage 98:</strong> Was bedeutet die Abkürzung „EASA“ im Drohnenbetrieb?<br>
+    <strong>Richtige Antwort:</strong> Europäische Agentur für Flugsicherheit</p>
+    
+    <!-- Frage 99 -->
+    <p><strong>Frage 99:</strong> In welchem Fall darf eine Drohne in der offenen Kategorie geflogen werden?<br>
+    <strong>Richtige Antwort:</strong> Nur in Bereichen ohne Menschenansammlungen</p>
+    
+    <!-- Frage 100 -->
+    <p><strong>Frage 100:</strong> Was muss ein Drohnenpilot bei der Flugvorbereitung immer überprüfen?<br>
+    <strong>Richtige Antwort:</strong> Wetterbedingungen, Flugbeschränkungen und Zustand der Drohne</p>
+    
+</div>
+</div>
+
+<script>
+    // Funktion zum Umschalten der Sichtbarkeit
+    function toggleVisibility(elementId) {
+        var content = document.getElementById(elementId);
+        if (content.classList.contains("show")) {
+            content.classList.remove("show");
+        } else {
+            // Zuerst alle anderen Module und das Quiz/Wissen schließen
+            var allContents = document.querySelectorAll(".content");
+            allContents.forEach(function(el) {
+                el.classList.remove("show");
+            });
+            // Dann das angeklickte Modul oder Quiz/Wissen öffnen
+            content.classList.add("show");
+        }
+    }
+</script>
+
+</body>
+</html>
+
+   <!-- Quiz Inhalt -->
+   <div id="quiz" class="content">
+    <h2>Quiz: Teste dein Wissen (100 Fragen)</h2>
+    <form id="quizForm">
+
+
+                <!-- Frage 1 -->
+                <p><strong>Frage 1:</strong> Welche Bedingungen können die VLOS-Bedingungen negativ beeinflussen?</p>
+                <label><input type="radio" id="q1a" name="q1" value="wrong"> Ein kleines UAS</label><br>
+                <label><input type="radio" id="q1b" name="q1" value="wrong"> Hohe Wolkenuntergrenzen</label><br>
+                <label><input type="radio" id="q1c" name="q1" value="correct"> Ein sich näherndes Gewitter</label><br>
+            
+                <!-- Frage 2 -->
+                <p><strong>Frage 2:</strong> Welche Bewegungsrichtung ist besonders schwierig einzuschätzen?</p>
+                <label><input type="radio" id="q2a" name="q2" value="wrong"> Seitwärtsbewegungen</label><br>
+                <label><input type="radio" id="q2b" name="q2" value="correct"> Bewegungen auf den Piloten zu oder weg von ihm</label><br>
+                <label><input type="radio" id="q2c" name="q2" value="wrong"> Bewegungen nach oben</label><br>
+            
+                <!-- Frage 3 -->
+                <p><strong>Frage 3:</strong> Nach dem Start eines UAS sollten in einer Flughöhe von etwa 2 m folgende Punkte überprüft werden:</p>
+                <label><input type="radio" id="q3a" name="q3" value="wrong"> Die Telemetrie und Verschmutzungen am UAS</label><br>
+                <label><input type="radio" id="q3b" name="q3" value="correct"> Die Telemetrie, die Nutzlast und der Controller</label><br>
+            
+                <!-- Frage 4 -->
+                <p><strong>Frage 4:</strong> Wer ist für die sichere Flugdurchführung verantwortlich?</p>
+                <label><input type="radio" id="q4a" name="q4" value="correct"> Der Fernpilot</label><br>
+                <label><input type="radio" id="q4b" name="q4" value="wrong"> Der Flugplatzbetreiber</label><br>
+            
+                <!-- Frage 5 -->
+                <p><strong>Frage 5:</strong> Wenn vormittags das Wetter für einen Flug geprüft wird, ist ein weiterer Wettercheck notwendig, wenn:</p>
+                <label><input type="radio" id="q5a" name="q5" value="wrong"> Sich das Wetter sichtbar verändert hat</label><br>
+                <label><input type="radio" id="q5b" name="q5" value="correct"> Ein erneuter Wettercheck kurz vor dem Abflug notwendig ist</label><br>
+            
+                <!-- Frage 6 -->
+                <p><strong>Frage 6:</strong> Unter Luftrisiko versteht man, wenn:</p>
+                <label><input type="radio" id="q6a" name="q6" value="correct"> Ein UAS mit anderen Luftraumnutzern kollidiert</label><br>
+                <label><input type="radio" id="q6b" name="q6" value="wrong"> Ein UAS auf Personen am Boden stürzt</label><br>
+            
+                <!-- Frage 7 -->
+                <p><strong>Frage 7:</strong> Welche der folgenden Aussagen über die Grundlagen des Fliegens ist korrekt?</p>
+                <label><input type="radio" id="q7a" name="q7" value="correct"> Die Form des Flügels kann gekrümmt sein und verursacht unterschiedliche Strömungsgeschwindigkeiten</label><br>
+                <label><input type="radio" id="q7b" name="q7" value="wrong"> Der niedrige Luftdruck bewegt sich immer in Richtung des hohen Luftdrucks</label><br>
+            
+                <!-- Frage 8 -->
+                <p><strong>Frage 8:</strong> Welche Aussage über die Telemetrie ist richtig?</p>
+                <label><input type="radio" id="q8a" name="q8" value="wrong"> Die Telemetrie steuert die Geschwindigkeit der Propeller</label><br>
+                <label><input type="radio" id="q8b" name="q8" value="correct"> Die Telemetrie sendet Steuersignale und erhält Informationen über den Status des UAS</label><br>
+            
+                <!-- Frage 9 -->
+                <p><strong>Frage 9:</strong> Welche Wetterbedingungen können den Flugbetrieb eines UAS einschränken?</p>
+                <label><input type="radio" id="q9a" name="q9" value="correct"> Nieselregen und Schneefall</label><br>
+                <label><input type="radio" id="q9b" name="q9" value="wrong"> Leichter Wind</label><br>
+            
+                <!-- Frage 10 -->
+                <p><strong>Frage 10:</strong> Welche Aussage über das Verhältnis zwischen Wellenlänge und Frequenz einer elektromagnetischen Welle ist korrekt?</p>
+                <label><input type="radio" id="q10a" name="q10" value="correct"> Die Frequenz ist umgekehrt proportional zur Wellenlänge</label><br>
+                <label><input type="radio" id="q10b" name="q10" value="wrong"> Je höher die Frequenz, desto größer die Wellenlänge</label><br>
+            
+                <!-- Frage 11 -->
+                <p><strong>Frage 11:</strong> Welche Flughöhe darf in der offenen Kategorie nicht überschritten werden?</p>
+                <label><input type="radio" id="q11a" name="q11" value="wrong"> 150 Meter</label><br>
+                <label><input type="radio" id="q11b" name="q11" value="correct"> 120 Meter</label><br>
+            
+                <!-- Frage 12 -->
+                <p><strong>Frage 12:</strong> Wer hat Vorrang im Luftraum?</p>
+                <label><input type="radio" id="q12a" name="q12" value="correct"> Bemannte Luftfahrzeuge</label><br>
+                <label><input type="radio" id="q12b" name="q12" value="wrong"> Unbemannte Luftfahrzeuge (Drohnen)</label><br>
+            
+                <!-- Frage 13 -->
+                <p><strong>Frage 13:</strong> Was bedeutet die Abkürzung GNSS?</p>
+                <label><input type="radio" id="q13a" name="q13" value="correct"> Globales Navigationssatellitensystem</label><br>
+                <label><input type="radio" id="q13b" name="q13" value="wrong"> Geografisches Navigationssystem</label><br>
+            
+                <!-- Frage 14 -->
+                <p><strong>Frage 14:</strong> In welchem Fall muss der Fernpilot den Flug sofort abbrechen?</p>
+                <label><input type="radio" id="q14a" name="q14" value="correct"> Wenn unbeteiligte Personen den Flugbereich betreten</label><br>
+                <label><input type="radio" id="q14b" name="q14" value="wrong"> Wenn sich die Drohne über einem leeren Feld befindet</label><br>
+            
+                <!-- Frage 15 -->
+                <p><strong>Frage 15:</strong> Welche der folgenden Aussagen beschreibt eine sichere Flugvorbereitung?</p>
+                <label><input type="radio" id="q15a" name="q15" value="correct"> Wetterbedingungen, Luftraumbeschränkungen und den Zustand des UAS überprüfen</label><br>
+                <label><input type="radio" id="q15b" name="q15" value="wrong"> Nur den Batteriestand der Drohne prüfen</label><br>
+            
+                <!-- Frage 16 -->
+                <p><strong>Frage 16:</strong> Was ist ein NOTAM?</p>
+                <label><input type="radio" id="q16a" name="q16" value="correct"> Eine Mitteilung über temporäre Luftraumbeschränkungen</label><br>
+                <label><input type="radio" id="q16b" name="q16" value="wrong"> Ein Luftraumüberwachungssystem</label><br>
+            
+                <!-- Frage 17 -->
+                <p><strong>Frage 17:</strong> Welche maximale Windgeschwindigkeit darf für sichere Drohnenflüge nicht überschritten werden?</p>
+                <label><input type="radio" id="q17a" name="q17" value="correct"> 15 m/s</label><br>
+                <label><input type="radio" id="q17b" name="q17" value="wrong"> 25 m/s</label><br>
+            
+                <!-- Frage 18 -->
+                <p><strong>Frage 18:</strong> Was bedeutet BVLOS?</p>
+                <label><input type="radio" id="q18a" name="q18" value="correct"> Betrieb außerhalb
+            
+
+            <!-- Frage 19 -->
+            <p><strong>Frage 19:</strong> Wie muss der Drohnenpilot handeln, wenn eine Person im Flugbereich auftaucht?</p>
+            <input type="radio" id="q19a" name="q19" value="correct"> Sofort landen oder ausweichen<br>
+            <input type="radio" id="q19b" name="q19" value="wrong"> Weiterfliegen, solange die Person nicht in Gefahr ist<br>
+            <input type="radio" id="q19c" name="q19" value="wrong"> Nur landen, wenn es ein Notfall ist<br>
+
+            <!-- Frage 20 -->
+            <p><strong>Frage 20:</strong> Was bedeutet das Kürzel „BVLOS“ im Drohnenbetrieb?</p>
+            <input type="radio" id="q20a" name="q20" value="correct"> Betrieb außerhalb der Sichtweite<br>
+            <input type="radio" id="q20b" name="q20" value="wrong"> Betrieb mit direkter GPS-Unterstützung<br>
+            <input type="radio" id="q20c" name="q20" value="wrong"> Betrieb unterhalb von 50 Metern Höhe<br>
+
+            <!-- Frage 21 -->
+<p><strong>Frage 21:</strong> Welche Wetterbedingungen können den Flugbetrieb eines UAS beeinträchtigen?</p>
+<label><input type="radio" id="q21a" name="q21" value="wrong"> Leichter Sonnenschein</label><br>
+<label><input type="radio" id="q21b" name="q21" value="correct"> Nieselregen und Schneefall</label><br>
+<label><input type="radio" id="q21c" name="q21" value="wrong"> Windstille</label><br>
+
+<!-- Frage 22 -->
+<p><strong>Frage 22:</strong> Was bedeutet die Abkürzung VLOS?</p>
+<label><input type="radio" id="q22a" name="q22" value="correct"> Visual Line of Sight</label><br>
+<label><input type="radio" id="q22b" name="q22" value="wrong"> Vertical Lift Off System</label><br>
+
+<!-- Frage 23 -->
+<p><strong>Frage 23:</strong> Was ist ein NOTAM?</p>
+<label><input type="radio" id="q23a" name="q23" value="correct"> Eine Mitteilung über temporäre Luftraumbeschränkungen</label><br>
+<label><input type="radio" id="q23b" name="q23" value="wrong"> Ein System zur Überwachung von Drohnenflügen</label><br>
+
+<!-- Frage 24 -->
+<p><strong>Frage 24:</strong> Was sollte nach dem Start eines UAS überprüft werden?</p>
+<label><input type="radio" id="q24a" name="q24" value="correct"> Die Telemetrie, Nutzlast und der Controller</label><br>
+<label><input type="radio" id="q24b" name="q24" value="wrong"> Nur der Batteriestatus</label><br>
+
+<!-- Frage 25 -->
+<p><strong>Frage 25:</strong> Wer ist für die sichere Flugdurchführung verantwortlich?</p>
+<label><input type="radio" id="q25a" name="q25" value="correct"> Der Fernpilot</label><br>
+<label><input type="radio" id="q25b" name="q25" value="wrong"> Der Flugplatzbetreiber</label><br>
+
+<!-- Frage 26 -->
+<p><strong>Frage 26:</strong> Wann ist ein erneuter Wettercheck notwendig?</p>
+<label><input type="radio" id="q26a" name="q26" value="correct"> Kurz vor dem Abflug</label><br>
+<label><input type="radio" id="q26b" name="q26" value="wrong"> Wenn sich das Wetter nicht geändert hat</label><br>
+
+<!-- Frage 27 -->
+<p><strong>Frage 27:</strong> Unter Luftrisiko versteht man, wenn...</p>
+<label><input type="radio" id="q27a" name="q27" value="correct"> Ein UAS mit anderen Luftraumnutzern kollidiert</label><br>
+<label><input type="radio" id="q27b" name="q27" value="wrong"> Ein UAS knapp über dem Boden fliegt</label><br>
+
+<!-- Frage 28 -->
+<p><strong>Frage 28:</strong> Welche Aussage über die Telemetrie ist korrekt?</p>
+<label><input type="radio" id="q28a" name="q28" value="correct"> Die Telemetrie sendet Steuersignale und erhält Informationen über den Status des UAS</label><br>
+<label><input type="radio" id="q28b" name="q28" value="wrong"> Die Telemetrie steuert die Geschwindigkeit der Propeller</label><br>
+
+<!-- Frage 29 -->
+<p><strong>Frage 29:</strong> Welche Frequenzbereiche sind für den Drohnenbetrieb relevant?</p>
+<label><input type="radio" id="q29a" name="q29" value="correct"> 2,4 GHz und 5,8 GHz</label><br>
+<label><input type="radio" id="q29b" name="q29" value="wrong"> 1,2 GHz und 2,2 GHz</label><br>
+
+<!-- Frage 30 -->
+<p><strong>Frage 30:</strong> Welche Flughöhe darf in der offenen Kategorie nicht überschritten werden?</p>
+<label><input type="radio" id="q30a" name="q30" value="correct"> 120 Meter</label><br>
+<label><input type="radio" id="q30b" name="q30" value="wrong"> 150 Meter</label><br>
+
+<!-- Frage 31 -->
+<p><strong>Frage 31:</strong> Was bedeutet GNSS?</p>
+<label><input type="radio" id="q31a" name="q31" value="correct"> Globales Navigationssatellitensystem</label><br>
+<label><input type="radio" id="q31b" name="q31" value="wrong"> Geografisches Navigationssystem</label><br>
+
+<!-- Frage 32 -->
+<p><strong>Frage 32:</strong> Was bedeutet BVLOS?</p>
+<label><input type="radio" id="q32a" name="q32" value="correct"> Betrieb außerhalb der Sichtlinie</label><br>
+<label><input type="radio" id="q32b" name="q32" value="wrong"> Betrieb innerhalb der Sichtlinie</label><br>
+
+<!-- Frage 33 -->
+<p><strong>Frage 33:</strong> Welche maximale Windgeschwindigkeit darf für sichere Drohnenflüge nicht überschritten werden?</p>
+<label><input type="radio" id="q33a" name="q33" value="correct"> 15 m/s</label><br>
+<label><input type="radio" id="q33b" name="q33" value="wrong"> 25 m/s</label><br>
+
+<!-- Frage 34 -->
+<p><strong>Frage 34:</strong> Welche Strömungsgeschwindigkeiten wirken auf die Ober- und Unterseite eines gekrümmten Flügels?</p>
+<label><input type="radio" id="q34a" name="q34" value="correct"> Die Luft strömt schneller über die gekrümmte Oberseite</label><br>
+<label><input type="radio" id="q34b" name="q34" value="wrong"> Die Luft strömt schneller unterhalb des Flügels</label><br>
+
+<!-- Frage 35 -->
+<p><strong>Frage 35:</strong> Wann muss der Fernpilot den Flug sofort abbrechen?</p>
+<label><input type="radio" id="q35a" name="q35" value="correct"> Wenn unbeteiligte Personen den Flugbereich betreten</label><br>
+<label><input type="radio" id="q35b" name="q35" value="wrong"> Wenn sich die Drohne über einem leeren Feld befindet</label><br>
+
+<!-- Frage 36 -->
+<p><strong>Frage 36:</strong> Welche Wetterbedingungen können den Flugbetrieb einschränken?</p>
+<label><input type="radio" id="q36a" name="q36" value="correct"> Nieselregen und Schneefall</label><br>
+<label><input type="radio" id="q36b" name="q36" value="wrong"> Windstille</label><br>
+
+<!-- Frage 37 -->
+<p><strong>Frage 37:</strong> Wann ist ein erneuter Wettercheck notwendig?</p>
+<label><input type="radio" id="q37a" name="q37" value="correct"> Kurz vor dem Abflug</label><br>
+<label><input type="radio" id="q37b" name="q37" value="wrong"> Nicht notwendig, solange das Wetter stabil bleibt</label><br>
+
+<!-- Frage 38 -->
+<p><strong>Frage 38:</strong> Wer ist für die sichere Flugdurchführung verantwortlich?</p>
+<label><input type="radio" id="q38a" name="q38" value="correct"> Der Fernpilot</label><br>
+<label><input type="radio" id="q38b" name="q38" value="wrong"> Der Flugplatzbetreiber</label><br>
+
+<!-- Frage 39 -->
+<p><strong>Frage 39:</strong> Was ist ein UAS?</p>
+<label><input type="radio" id="q39a" name="q39" value="correct"> Unmanned Aircraft System</label><br>
+<label><input type="radio" id="q39b" name="q39" value="wrong"> Universal Air Safety</label><br>
+
+<!-- Frage 40 -->
+<p><strong>Frage 40:</strong> Welche Aussage über das Verhältnis von Wellenlänge und Frequenz ist korrekt?</p>
+<label><input type="radio" id="q40a" name="q40" value="correct"> Die Frequenz ist umgekehrt proportional zur Wellenlänge</label><br>
+<label><input type="radio" id="q40b" name="q40" value="wrong"> Je höher die Frequenz, desto größer die Wellenlänge</label><br>
+
+
+            <!-- Frage 42 -->
+            <p><strong>Frage 42:</strong> Was ist die maximale Flughöhe für Drohnen in der offenen Kategorie in Europa?</p>
+            <input type="radio" id="q42a" name="q42" value="correct"> 120 Meter<br>
+            <input type="radio" id="q42b" name="q42" value="wrong"> 100 Meter<br>
+            <input type="radio" id="q42c" name="q42" value="wrong"> 150 Meter<br>
+            <!-- Frage 42 -->
+            <p><strong>Frage 42:</strong> Was ist die maximale Flughöhe für Drohnen in der offenen Kategorie in Europa?</p>
+            <input type="radio" id="q42a" name="q42" value="correct"> 120 Meter<br>
+            <input type="radio" id="q42b" name="q42" value="wrong"> 100 Meter<br>
+            <input type="radio" id="q42c" name="q42" value="wrong"> 150 Meter<br>
+
+            <!-- Frage 43 -->
+            <p><strong>Frage 43:</strong> Welche Genehmigung wird benötigt, um in der spezifischen Kategorie zu fliegen?</p>
+            <input type="radio" id="q43a" name="q43" value="correct"> Betriebsbewilligung der zuständigen Behörde<br>
+            <input type="radio" id="q43b" name="q43" value="wrong"> Keine Genehmigung erforderlich<br>
+            <input type="radio" id="q43c" name="q43" value="wrong"> Genehmigung durch den Hersteller der Drohne<br>
+
+            <!-- Frage 44 -->
+            <p><strong>Frage 44:</strong> Wie oft sollten Drohnenpropeller auf Beschädigungen überprüft werden?</p>
+            <input type="radio" id="q44a" name="q44" value="correct"> Vor jedem Flug<br>
+            <input type="radio" id="q44b" name="q44" value="wrong"> Einmal monatlich<br>
+            <input type="radio" id="q44c" name="q44" value="wrong"> Einmal jährlich<br>
+
+            <!-- Frage 45 -->
+            <p><strong>Frage 45:</strong> Welche Drohnenkategorie erlaubt das Fliegen über Menschenansammlungen?</p>
+            <input type="radio" id="q45a" name="q45" value="wrong"> Spezifische Kategorie<br>
+            <input type="radio" id="q45b" name="q45" value="wrong"> Offene Kategorie<br>
+            <input type="radio" id="q45c" name="q45" value="correct"> Zulassungspflichtige Kategorie mit Sondergenehmigung<br>
+
+            <!-- Frage 46 -->
+            <p><strong>Frage 46:</strong> Was ist die wichtigste Aufgabe des Drohnenführers während des Flugs?</p>
+            <input type="radio" id="q46a" name="q46" value="correct"> Die Kontrolle und Überwachung der Drohne<br>
+            <input type="radio" id="q46b" name="q46" value="wrong"> Die Auswertung der Kamerabilder<br>
+            <input type="radio" id="q46c" name="q46" value="wrong"> Das Einhalten der Fluggeschwindigkeit<br>
+
+            <!-- Frage 47 -->
+            <p><strong>Frage 47:</strong> Wie sollte ein Drohnenpilot auf plötzliche Windböen reagieren?</p>
+            <input type="radio" id="q47a" name="q47" value="correct"> Die Drohne sicher landen<br>
+            <input type="radio" id="q47b" name="q47" value="wrong"> Den Flug fortsetzen<br>
+            <input type="radio" id="q47c" name="q47" value="wrong"> Auf automatische Stabilisierung vertrauen<br>
+
+            <!-- Frage 48 -->
+            <p><strong>Frage 48:</strong> Was ist der größte Risikofaktor für den Drohnenbetrieb in städtischen Gebieten?</p>
+            <input type="radio" id="q48a" name="q48" value="correct"> Hindernisse wie Gebäude und Bäume<br>
+            <input type="radio" id="q48b" name="q48" value="wrong"> Niedrige Temperaturen<br>
+            <input type="radio" id="q48c" name="q48" value="wrong"> Hohe Windgeschwindigkeit<br>
+
+            <!-- Frage 49 -->
+            <p><strong>Frage 49:</strong> Was versteht man unter dem Begriff "Failsafe" bei Drohnen?</p>
+            <input type="radio" id="q49a" name="q49" value="correct"> Ein Sicherheitsmechanismus, der bei Problemen die Drohne sicher landen lässt<br>
+            <input type="radio" id="q49b" name="q49" value="wrong"> Ein System, das die Kamera kalibriert<br>
+            <input type="radio" id="q49c" name="q49" value="wrong"> Ein Modus, um die Drohne langsamer zu fliegen<br>
+
+            <!-- Frage 50 -->
+            <p><strong>Frage 50:</strong> Was bedeutet der Begriff „BVLOS“ im Zusammenhang mit Drohnenoperationen?</p>
+            <input type="radio" id="q50a" name="q50" value="correct"> Betrieb außerhalb der Sichtweite<br>
+            <input type="radio" id="q50b" name="q50" value="wrong"> Betrieb innerhalb der Sichtweite<br>
+            <input type="radio" id="q50c" name="q50" value="wrong"> Betrieb innerhalb von 500 Metern<br>
+
+            <!-- Frage 51 -->
+            <p><strong>Frage 51:</strong> Welche Informationen sollten vor dem Drohnenflug in einer Flugvorbereitung überprüft werden?</p>
+            <input type="radio" id="q51a" name="q51" value="correct"> Wetterbedingungen, Flugbeschränkungen und Zustand der Drohne<br>
+            <input type="radio" id="q51b" name="q51" value="wrong"> Nur der Batteriestatus<br>
+            <input type="radio" id="q51c" name="q51" value="wrong"> Nur die Sichtweite der Drohne<br>
+
+            <!-- Frage 52 -->
+            <p><strong>Frage 52:</strong> Was ist die maximale Flughöhe in der offenen Kategorie ohne Genehmigung?</p>
+            <input type="radio" id="q52a" name="q52" value="correct"> 120 Meter<br>
+            <input type="radio" id="q52b" name="q52" value="wrong"> 100 Meter<br>
+            <input type="radio" id="q52c" name="q52" value="wrong"> 150 Meter<br>
+
+            <!-- Frage 53 -->
+            <p><strong>Frage 53:</strong> Wann darf eine Drohne über unbeteiligten Personen fliegen?</p>
+            <input type="radio" id="q53a" name="q53" value="wrong"> Wenn sie unter 250 Gramm wiegt<br>
+            <input type="radio" id="q53b" name="q53" value="correct"> Nur mit einer speziellen Genehmigung<br>
+            <input type="radio" id="q53c" name="q53" value="wrong"> In ländlichen Gebieten ohne Menschenansammlungen<br>
+
+            <!-- Frage 54 -->
+            <p><strong>Frage 54:</strong> Was bedeutet der Begriff „VLOS“ bei Drohnenoperationen?</p>
+            <input type="radio" id="q54a" name="q54" value="correct"> Der Pilot muss die Drohne jederzeit sehen können<br>
+            <input type="radio" id="q54b" name="q54" value="wrong"> Der Pilot kann die Drohne per GPS steuern<br>
+            <input type="radio" id="q54c" name="q54" value="wrong"> Die Drohne muss über eine Kamera verfügen<br>
+
+            <!-- Frage 55 -->
+            <p><strong>Frage 55:</strong> Was ist vor jedem Drohnenflug immer zu überprüfen?</p>
+            <input type="radio" id="q55a" name="q55" value="correct"> Wetterbedingungen und Flugbereich<br>
+            <input type="radio" id="q55b" name="q55" value="wrong"> Nur der Batteriestatus<br>
+            <input type="radio" id="q55c" name="q55" value="wrong"> Nur die Kamerakalibrierung<br>
+
+            <!-- Frage 56 -->
+            <p><strong>Frage 56:</strong> Wie kann ein Drohnenpilot eine sichere Landung bei schwachem GPS-Signal gewährleisten?</p>
+            <input type="radio" id="q56a" name="q56" value="correct"> Manuelle Steuerung übernehmen<br>
+            <input type="radio" id="q56b" name="q56" value="wrong"> Die Drohne automatisch landen lassen<br>
+            <input type="radio" id="q56c" name="q56" value="wrong"> Auf das „Return to Home“-System vertrauen<br>
+
+            <!-- Frage 57 -->
+            <p><strong>Frage 57:</strong> Was ist ein Geo-Fence im Drohnenbetrieb?</p>
+            <input type="radio" id="q57a" name="q57" value="correct"> Ein virtuelles System, das den Flugbereich der Drohne einschränkt<br>
+            <input type="radio" id="q57b" name="q57" value="wrong"> Ein Gerät zur GPS-Ortung der Drohne<br>
+            <!-- Frage 57 -->
+            <p><strong>Frage 57:</strong> Was ist ein Geo-Fence im Drohnenbetrieb?</p>
+            <input type="radio" id="q57a" name="q57" value="correct"> Ein virtuelles System, das den Flugbereich der Drohne einschränkt<br>
+            <input type="radio" id="q57b" name="q57" value="wrong"> Ein Gerät zur GPS-Ortung der Drohne<br>
+            <input type="radio" id="q57c" name="q57" value="wrong"> Ein physisches Hindernis im Flugbereich<br>
+
+            <!-- Frage 58 -->
+            <p><strong>Frage 58:</strong> Wie oft sollte der Drohnenpilot die Firmware der Drohne aktualisieren?</p>
+            <input type="radio" id="q58a" name="q58" value="correct"> Regelmäßig, je nach Herstellerempfehlung<br>
+            <input type="radio" id="q58b" name="q58" value="wrong"> Nur nach jedem Flug<br>
+            <input type="radio" id="q58c" name="q58" value="wrong"> Nur nach einem Softwarefehler<br>
+
+            <!-- Frage 59 -->
+            <p><strong>Frage 59:</strong> Welche Kategorie von Drohnen erfordert keine spezielle Genehmigung für den Betrieb?</p>
+            <input type="radio" id="q59a" name="q59" value="correct"> Offene Kategorie<br>
+            <input type="radio" id="q59b" name="q59" value="wrong"> Spezifische Kategorie<br>
+            <input type="radio" id="q59c" name="q59" value="wrong"> Zulassungspflichtige Kategorie<br>
+
+            <!-- Frage 60 -->
+            <p><strong>Frage 60:</strong> Was ist der „Return to Home“-Modus bei Drohnen?</p>
+            <input type="radio" id="q60a" name="q60" value="correct"> Ein Modus, der die Drohne automatisch zum Startpunkt zurückfliegen lässt<br>
+            <input type="radio" id="q60b" name="q60" value="wrong"> Ein Modus, der die Drohne zu einem vorbestimmten Landeplatz fliegen lässt<br>
+            <input type="radio" id="q60c" name="q60" value="wrong"> Ein Sicherheitsmodus, der die Drohne anhalten lässt<br>
+
+            <!-- Frage 61 -->
+            <p><strong>Frage 61:</strong> Wie verhält sich eine Drohne, wenn der Akku fast leer ist?</p>
+            <input type="radio" id="q61a" name="q61" value="correct"> Sie kehrt automatisch zum Startpunkt zurück<br>
+            <input type="radio" id="q61b" name="q61" value="wrong"> Sie schaltet sich sofort ab<br>
+            <input type="radio" id="q61c" name="q61" value="wrong"> Sie fliegt langsamer, um Energie zu sparen<br>
+
+            <!-- Frage 62 -->
+            <p><strong>Frage 62:</strong> Was muss ein Drohnenpilot tun, wenn er die Verbindung zur Drohne verliert?</p>
+            <input type="radio" id="q62a" name="q62" value="correct"> Den „Return to Home“-Modus aktivieren, wenn nicht automatisch<br>
+            <input type="radio" id="q62b" name="q62" value="wrong"> Weiterfliegen und versuchen, die Verbindung wiederherzustellen<br>
+            <input type="radio" id="q62c" name="q62" value="wrong"> Sofort den Flug abbrechen und die Drohne manuell steuern<br>
+            <!-- Frage 63 -->
+            <p><strong>Frage 63:</strong> Welche Drohnenkategorie erfordert eine detaillierte Risikobewertung vor dem Flug?</p>
+            <input type="radio" id="q63a" name="q63" value="correct"> Spezifische Kategorie<br>
+            <input type="radio" id="q63b" name="q63" value="wrong"> Offene Kategorie<br>
+            <input type="radio" id="q63c" name="q63" value="wrong"> Zulassungspflichtige Kategorie<br>
+
+            <!-- Frage 64 -->
+            <p><strong>Frage 64:</strong> Was bedeutet die Abkürzung UAS im Drohnenbetrieb?</p>
+            <input type="radio" id="q64a" name="q64" value="correct"> Unmanned Aircraft System<br>
+            <input type="radio" id="q64b" name="q64" value="wrong"> United Aerial Security<br>
+            <input type="radio" id="q64c" name="q64" value="wrong"> Unidentified Airborne Signal<br>
+
+            <!-- Frage 65 -->
+            <p><strong>Frage 65:</strong> Was sollte ein Drohnenpilot tun, wenn sich während des Fluges eine Notlage entwickelt?</p>
+            <input type="radio" id="q65a" name="q65" value="correct"> Die Drohne sicher landen<br>
+            <input type="radio" id="q65b" name="q65" value="wrong"> Den Flug sofort beenden<br>
+            <input type="radio" id="q65c" name="q65" value="wrong"> Den „Return to Home“-Modus aktivieren<br>
+
+            <!-- Frage 66 -->
+            <p><strong>Frage 66:</strong> Was ist eine „No-Fly-Zone“ im Drohnenbetrieb?</p>
+            <input type="radio" id="q66a" name="q66" value="correct"> Ein Bereich, in dem das Fliegen von Drohnen verboten ist<br>
+            <input type="radio" id="q66b" name="q66" value="wrong"> Ein Bereich, in dem nur autorisierte Drohnen fliegen dürfen<br>
+            <input type="radio" id="q66c" name="q66" value="wrong"> Ein Bereich, in dem Drohnen nur in einer bestimmten Höhe fliegen dürfen<br>
+
+            <!-- Frage 67 -->
+            <p><strong>Frage 67:</strong> Wann ist eine Drohne als „unbemanntes Luftfahrzeug“ (UAS) klassifiziert?</p>
+            <input type="radio" id="q67a" name="q67" value="correct"> Wenn sie ohne direkten Eingriff eines Piloten betrieben wird<br>
+            <input type="radio" id="q67b" name="q67" value="wrong"> Wenn sie nur von einem Piloten per Fernsteuerung betrieben wird<br>
+            <input type="radio" id="q67c" name="q67" value="wrong"> Wenn sie automatisch ohne jegliche menschliche Steuerung fliegt<br>
+
+            <!-- Frage 68 -->
+            <p><strong>Frage 68:</strong> Welche Arten von Drohnenflügen benötigen eine spezielle Genehmigung?</p>
+            <input type="radio" id="q68a" name="q68" value="correct"> Flüge in der spezifischen Kategorie<br>
+            <input type="radio" id="q68b" name="q68" value="wrong"> Flüge in der offenen Kategorie<br>
+            <input type="radio" id="q68c" name="q68" value="wrong"> Flüge in der zulassungspflichtigen Kategorie<br>
+
+            <!-- Frage 69 -->
+            <p><strong>Frage 69:</strong> Was ist der Unterschied zwischen der offenen und der spezifischen Kategorie im Drohnenbetrieb?</p>
+            <input type="radio" id="q69a" name="q69" value="correct"> Die spezifische Kategorie erfordert eine Risikoanalyse und Genehmigung<br>
+            <input type="radio" id="q69b" name="q69" value="wrong"> Die offene Kategorie erlaubt Flüge in größeren Höhen<br>
+            <input type="radio" id="q69c" name="q69" value="wrong"> Die spezifische Kategorie erlaubt Flüge über Menschenansammlungen<br>
+
+            <!-- Frage 70 -->
+            <p><strong>Frage 70:</strong> Was bedeutet der Begriff „LOS“ im Zusammenhang mit Drohnenflügen?</p>
+            <input type="radio" id="q70a" name="q70" value="correct"> Line of Sight (Sichtlinie zum Piloten)<br>
+            <input type="radio" id="q70b" name="q70" value="wrong"> Limit of Speed (Geschwindigkeitsbegrenzung)<br>
+            <input type="radio" id="q70c" name="q70" value="wrong"> Length of Service (Nutzungsdauer der Drohne)<br>
+
+            <!-- Frage 71 -->
+            <p><strong>Frage 71:</strong> Welche Haftpflichtversicherung ist für den Betrieb von Drohnen erforderlich?</p>
+            <input type="radio" id="q71a" name="q71" value="correct"> Eine spezielle Drohnen-Haftpflichtversicherung<br>
+            <input type="radio" id="q71b" name="q71" value="wrong"> Eine allgemeine Luftfahrt-Haftpflichtversicherung<br>
+            <input type="radio" id="q71c" name="q71" value="wrong"> Keine spezielle Versicherung notwendig<br>
+
+            <!-- Frage 72 -->
+            <p><strong>Frage 72:</strong> In welchem Fall darf eine Drohne ohne Genehmigung betrieben werden?</p>
+            <input type="radio" id="q72a" name="q72" value="correct"> In der offenen Kategorie unter Einhaltung der Vorschriften<br>
+            <input type="radio" id="q72b" name="q72" value="wrong"> In der spezifischen Kategorie, wenn keine Menschen in der Nähe sind<br>
+            <input type="radio" id="q72c" name="q72" value="wrong"> In der zulassungspflichtigen Kategorie bei Flügen unter 50 Metern Höhe<br>
+            <!-- Frage 73 -->
+            <p><strong>Frage 73:</strong> Welche Vorschrift regelt den Drohnenbetrieb in Europa?</p>
+            <input type="radio" id="q73a" name="q73" value="correct"> EU-Verordnung 2019/947<br>
+            <input type="radio" id="q73b" name="q73" value="wrong"> ICAO-Verordnung für Drohnen<br>
+            <input type="radio" id="q73c" name="q73" value="wrong"> US FAA-Drohnenverordnung<br>
+
+            <!-- Frage 74 -->
+            <p><strong>Frage 74:</strong> Was muss ein Drohnenpilot tun, wenn er eine temporäre Flugverbotszone betritt?</p>
+            <input type="radio" id="q74a" name="q74" value="correct"> Den Flug sofort einstellen<br>
+            <input type="radio" id="q74b" name="q74" value="wrong"> Weiterfliegen, solange die Drohne unter 120 Metern bleibt<br>
+            <input type="radio" id="q74c" name="q74" value="wrong"> Den Flug fortsetzen, wenn die Zone nicht aktiv überwacht wird<br>
+
+            <!-- Frage 75 -->
+            <p><strong>Frage 75:</strong> Was ist ein „U-Space“ im Zusammenhang mit Drohnenflügen?</p>
+            <input type="radio" id="q75a" name="q75" value="correct"> Ein regulierter Luftraum speziell für Drohnenflüge<br>
+            <input type="radio" id="q75b" name="q75" value="wrong"> Ein privater Luftraum für Drohnenflüge<br>
+            <input type="radio" id="q75c" name="q75" value="wrong"> Ein geschützter Bereich für bemannte Luftfahrzeuge<br>
+
+            <!-- Frage 76 -->
+            <p><strong>Frage 76:</strong> Welche Kategorie von Drohnenflügen erlaubt den Einsatz autonomer Drohnen?</p>
+            <input type="radio" id="q76a" name="q76" value="correct"> Spezifische Kategorie<br>
+            <input type="radio" id="q76b" name="q76" value="wrong"> Offene Kategorie<br>
+            <input type="radio" id="q76c" name="q76" value="wrong"> Zulassungspflichtige Kategorie<br>
+
+            <!-- Frage 77 -->
+            <p><strong>Frage 77:</strong> Welche Genehmigung ist erforderlich, um in der zulassungspflichtigen Kategorie zu fliegen?</p>
+            <input type="radio" id="q77a" name="q77" value="correct"> Eine Betriebsgenehmigung<br>
+            <input type="radio" id="q77b" name="q77" value="wrong"> Keine Genehmigung erforderlich<br>
+            <input type="radio" id="q77c" name="q77" value="wrong"> Eine Standard-Genehmigung für Drohnen<br>
+
+            <!-- Frage 78 -->
+            <p><strong>Frage 78:</strong> Was ist die minimale Sichtweite, die für den Betrieb von Drohnen in der offenen Kategorie erforderlich ist?</p>
+            <input type="radio" id="q78a" name="q78" value="correct"> Direkte Sichtlinie zur Drohne (VLOS)<br>
+            <input type="radio" id="q78b" name="q78" value="wrong"> 500 Meter<br>
+            <input type="radio" id="q78c" name="q78" value="wrong"> 1 Kilometer<br>
+
+            <!-- Frage 79 -->
+            <p><strong>Frage 79:</strong> In welchem Fall darf ein Drohnenpilot den Flug fortsetzen, obwohl die Wetterbedingungen schlechter werden?</p>
+            <input type="radio" id="q79a" name="q79" value="wrong"> Wenn der Wind weniger als 10 m/s beträgt<br>
+            <input type="radio" id="q79b" name="q79" value="wrong"> Wenn der Drohnenpilot eine spezielle Genehmigung hat<br>
+            <input type="radio" id="q79c" name="q79" value="correct"> Der Flug sollte abgebrochen werden, da sich die Wetterbedingungen verschlechtern<br>
+
+            <!-- Frage 80 -->
+            <p><strong>Frage 80:</strong> Welche maximale Geschwindigkeit ist für Drohnen in der offenen Kategorie erlaubt?</p>
+            <input type="radio" id="q80a" name="q80" value="correct"> 19 m/s<br>
+            <input type="radio" id="q80b" name="q80" value="wrong"> 30 m/s<br>
+            <input type="radio" id="q80c" name="q80" value="wrong"> 50 m/s<br>
+
+            <!-- Frage 81 -->
+            <p><strong>Frage 81:</strong> In welchem Fall darf eine Drohne in der Nähe von Flughäfen betrieben werden?</p>
+            <input type="radio" id="q81a" name="q81" value="correct"> Nur mit einer speziellen Erlaubnis<br>
+            <input type="radio" id="q81b" name="q81" value="wrong"> Wenn die Drohne unter 250 Gramm wiegt<br>
+            <input type="radio" id="q81c" name="q81" value="wrong"> Wenn sie unter 120 Metern fliegt<br>
+
+            <!-- Frage 82 -->
+            <p><strong>Frage 82:</strong> Was ist die Rolle des „Registrierungsnummern-Systems“ im Drohnenbetrieb?</p>
+            <input type="radio" id="q82a" name="q82" value="correct"> Es identifiziert den Betreiber der Drohne<br>
+            <input type="radio" id="q82b" name="q82" value="wrong"> Es registriert die Drohne bei der lokalen Flugbehörde<br>
+            <input type="radio" id="q82c" name="q82" value="wrong"> Es erlaubt der Drohne, über große Höhen zu fliegen<br>
+
+            <!-- Frage 83 -->
+            <p><strong>Frage 83:</strong> In welchem Fall ist das Fliegen einer Drohne über 25 Kilogramm erlaubt?</p>
+            <input type="radio" id="q83a" name="q83" value="correct"> Nur mit einer Sondergenehmigung<br>
+            <input type="radio" id="q83b" name="q83" value="wrong"> Wenn der Flug unter 120 Metern bleibt<br>
+            <input type="radio" id="q83c" name="q83" value="wrong"> In ländlichen Gebieten ohne Menschenansammlungen<br>
+            <!-- Frage 84 -->
+            <p><strong>Frage 84:</strong> Wie lange ist die Drohnenregistrierung in Europa gültig?</p>
+            <input type="radio" id="q84a" name="q84" value="correct"> 5 Jahre<br>
+            <input type="radio" id="q84b" name="q84" value="wrong"> 1 Jahr<br>
+            <input type="radio" id="q84c" name="q84" value="wrong"> 10 Jahre<br>
+
+            <!-- Frage 85 -->
+            <p><strong>Frage 85:</strong> Welche maximale Flughöhe darf ohne Genehmigung nicht überschritten werden?</p>
+            <input type="radio" id="q85a" name="q85" value="correct"> 120 Meter<br>
+            <input type="radio" id="q85b" name="q85" value="wrong"> 150 Meter<br>
+            <input type="radio" id="q85c" name="q85" value="wrong"> 100 Meter<br>
+
+            <!-- Frage 86 -->
+            <p><strong>Frage 86:</strong> Welche Maßnahmen sollte ein Drohnenpilot ergreifen, wenn während des Flugs das GPS-Signal verloren geht?</p>
+            <input type="radio" id="q86a" name="q86" value="correct"> Die Drohne manuell steuern und sicher landen<br>
+            <input type="radio" id="q86b" name="q86" value="wrong"> Weiterfliegen, bis das Signal zurückkehrt<br>
+            <input type="radio" id="q86c" name="q86" value="wrong"> Den Flug abbrechen und das „Return to Home“-System aktivieren<br>
+
+            <!-- Frage 87 -->
+            <p><strong>Frage 87:</strong> In welchem Fall darf eine Drohne über Menschen fliegen?</p>
+            <input type="radio" id="q87a" name="q87" value="wrong"> Wenn sie mit einem Fallschirm ausgestattet ist<br>
+            <input type="radio" id="q87b" name="q87" value="correct"> Nur mit einer speziellen Genehmigung<br>
+            <input type="radio" id="q87c" name="q87" value="wrong"> Wenn der Flug unter 50 Metern Höhe bleibt<br>
+
+            <!-- Frage 88 -->
+            <p><strong>Frage 88:</strong> Was bedeutet die Abkürzung SORA im Drohnenbetrieb?</p>
+            <input type="radio" id="q88a" name="q88" value="correct"> Specific Operations Risk Assessment<br>
+            <input type="radio" id="q88b" name="q88" value="wrong"> Safety Operations Regulatory Authority<br>
+            <input type="radio" id="q88c" name="q88" value="wrong"> Standard Operations Risk Analysis<br>
+
+            <!-- Frage 89 -->
+            <p><strong>Frage 89:</strong> Welche Drohnenoperationen erfordern immer eine Risikoanalyse?</p>
+            <input type="radio" id="q89a" name="q89" value="correct"> Spezifische Kategorie<br>
+            <input type="radio" id="q89b" name="q89" value="wrong"> Offene Kategorie<br>
+            <input type="radio" id="q89c" name="q89" value="wrong"> Zulassungspflichtige Kategorie<br>
+
+            <!-- Frage 90 -->
+            <p><strong>Frage 90:</strong> Welche Technologie wird häufig verwendet, um Drohnen in der Luft zu lokalisieren?</p>
+            <input type="radio" id="q90a" name="q90" value="correct"> GPS<br>
+            <input type="radio" id="q90b" name="q90" value="wrong"> Radar<br>
+            <input type="radio" id="q90c" name="q90" value="wrong"> Funkbaken<br>
+
+            <!-- Frage 91 -->
+            <p><strong>Frage 91:</strong> In welchem Fall muss der Drohnenpilot die direkte Sichtlinie zur Drohne (VLOS) einhalten?</p>
+            <input type="radio" id="q91a" name="q91" value="correct"> In der offenen Kategorie<br>
+            <input type="radio" id="q91b" name="q91" value="wrong"> In der spezifischen Kategorie<br>
+            <input type="radio" id="q91c" name="q91" value="wrong"> In der zulassungspflichtigen Kategorie<br>
+
+            <!-- Frage 92 -->
+            <p><strong>Frage 92:</strong> Was sollte der Drohnenpilot tun, wenn eine unbeteiligte Person den Flugbereich betritt?</p>
+            <input type="radio" id="q92a" name="q92" value="correct"> Sofort den Flug abbrechen und die Drohne landen<br>
+            <input type="radio" id="q92b" name="q92" value="wrong"> Weiterfliegen, solange die Person nicht gefährdet ist<br>
+            <input type="radio" id="q92c" name="q92" value="wrong"> Den Flug fortsetzen, wenn die Drohne höher als 50 Meter fliegt<br>
+
+            <!-- Frage 93 -->
+            <p><strong>Frage 93:</strong> In welchem Fall ist eine Drohnenversicherung verpflichtend?</p>
+            <input type="radio" id="q93a" name="q93" value="correct"> In allen Fällen, unabhängig vom Gewicht der Drohne<br>
+            <input type="radio" id="q93b" name="q93" value="wrong"> Nur für Drohnen über 250 Gramm<br>
+            <input type="radio" id="q93c" name="q93" value="wrong"> Nur für Drohnen, die in städtischen Gebieten fliegen<br>
+
+            <!-- Frage 94 -->
+            <p><strong>Frage 94:</strong> Was ist die maximale Geschwindigkeit einer Drohne in der offenen Kategorie?</p>
+            <input type="radio" id="q94a" name="q94" value="correct"> 19 m/s<br>
+            <input type="radio" id="q94b" name="q94" value="wrong"> 25 m/s<br>
+            <input type="radio" id="q94c" name="q94" value="wrong"> 30 m/s<br>
+
+            <!-- Frage 95 -->
+            <p><strong>Frage 95:</strong> Welche Flugkategorie erlaubt Flüge über Menschenansammlungen?</p>
+            <input type="radio" id="q95a" name="q95" value="correct"> Zulassungspflichtige Kategorie<br>
+            <input type="radio" id="q95b" name="q95" value="wrong"> Offene Kategorie<br>
+            <input type="radio" id="q95c" name="q95" value="wrong"> Spezifische Kategorie<br>
+            <!-- Frage 96 -->
+            <p><strong>Frage 96:</strong> Was muss ein Drohnenpilot tun, wenn er eine Flugbeschränkungszone betritt?</p>
+            <input type="radio" id="q96a" name="q96" value="correct"> Den Flug sofort abbrechen und die Drohne sicher landen<br>
+            <input type="radio" id="q96b" name="q96" value="wrong"> Den Flug fortsetzen, solange die Drohne unter 50 Meter Höhe bleibt<br>
+            <input type="radio" id="q96c" name="q96" value="wrong"> Weiterfliegen, wenn die Sichtlinie zur Drohne besteht<br>
+
+            <!-- Frage 97 -->
+            <p><strong>Frage 97:</strong> Was ist der wichtigste Faktor für einen sicheren Drohnenbetrieb?</p>
+            <input type="radio" id="q97a" name="q97" value="correct"> Das Einhalten aller geltenden Vorschriften und Sicherheitsregeln<br>
+            <input type="radio" id="q97b" name="q97" value="wrong"> Das Vorhandensein eines GPS-Signals<br>
+            <input type="radio" id="q97c" name="q97" value="wrong"> Die Verfügbarkeit einer Kamerasteuerung<br>
+
+            <!-- Frage 98 -->
+            <p><strong>Frage 98:</strong> Was bedeutet die Abkürzung „EASA“ im Drohnenbetrieb?</p>
+            <input type="radio" id="q98a" name="q98" value="correct"> Europäische Agentur für Flugsicherheit<br>
+            <input type="radio" id="q98b" name="q98" value="wrong"> Europäisches Zentrum für Drohnensicherheit<br>
+            <input type="radio" id="q98c" name="q98" value="wrong"> Einheitlicher Luftverkehrsraum für Europa<br>
+
+            <!-- Frage 99 -->
+            <p><strong>Frage 99:</strong> In welchem Fall darf eine Drohne in der offenen Kategorie geflogen werden?</p>
+            <input type="radio" id="q99a" name="q99" value="correct"> Nur in Bereichen ohne Menschenansammlungen<br>
+            <input type="radio" id="q99b" name="q99" value="wrong"> In allen Bereichen, solange die Flughöhe unter 100 Metern bleibt<br>
+            <input type="radio" id="q99c" name="q99" value="wrong"> In der Nähe von Flughäfen, solange der Pilot eine Genehmigung hat<br>
+
+            <!-- Frage 100 -->
+            <p><strong>Frage 100:</strong> Was muss ein Drohnenpilot bei der Flugvorbereitung immer überprüfen?</p>
+            <input type="radio" id="q100a" name="q100" value="correct"> Wetterbedingungen, Flugbeschränkungen und Zustand der Drohne<br>
+            <input type="radio" id="q100b" name="q100" value="wrong"> Nur den Batteriestatus<br>
+            <input type="radio" id="q100c" name="q100" value="wrong"> Nur die Flughöhe und Geschwindigkeit<br>
+
+            <script>
+                // Funktion zum Umschalten der Sichtbarkeit
+                function toggleVisibility(elementId) {
+                    var content = document.getElementById(elementId);
+                    if (content.classList.contains("show")) {
+                        content.classList.remove("show");
+                    } else {
+                        // Zuerst alle anderen Module und das Quiz/Wissen schließen
+                        var allContents = document.querySelectorAll(".content");
+                        allContents.forEach(function(el) {
+                            el.classList.remove("show");
+                        });
+                        // Dann das angeklickte Modul oder Quiz/Wissen öffnen
+                        content.classList.add("show");
+                    }
+                }
+            </script>
+            
+            </body>
+            </html>
+
+            <script>
+                // Funktion zum Umschalten der Sichtbarkeit
+                function toggleVisibility(elementId) {
+                    var content = document.getElementById(elementId);
+                    if (content.classList.contains("show")) {
+                        content.classList.remove("show");
+                    } else {
+                        // Zuerst alle anderen Module und das Quiz schließen
+                        var allContents = document.querySelectorAll(".content");
+                        allContents.forEach(function(el) {
+                            el.classList.remove("show");
+                        });
+                        // Dann das angeklickte Modul oder Quiz öffnen
+                        content.classList.add("show");
+                    }
+                }
+            </script>
+            
+            </body>
+            </html>
+
+
+            <script>
+                function togglePreparation() {
+                    var content = document.getElementById('preparationContent');
+                    if (content.style.display === "none" || content.style.display === "") {
+                        content.style.display = "block";
+                    } else {
+                        content.style.display = "none";
+                    }
+                }
+        
+                // Sicherstellen, dass die Antworten standardmäßig ausgeblendet sind
+                window.onload = function() {
+                    document.getElementById('preparationContent').style.display = 'none';
+                }
+            </script>
+        
+        </body>
+        </html>
+
+   
+            <!-- Button zur Auswertung -->
+            <button type="button" class="btn" onclick="evaluateQuiz()">Quiz auswerten</button>
+        </form>
+
+        <!-- Ergebnis-Anzeige -->
+        <p id="quizResult"></p>
+    </div>
+
+    <!-- Vorbereitung für Quiz (Richtige Antworten anzeigen) -->
+    <div id="preparationContent" class="content">
+        <h2>Vorbereitung für das Quiz: Fragen und Antworten</h2>
+        <p><strong>Frage 1:</strong> Welche Bedingungen können die VLOS-Bedingungen negativ beeinflussen?<br>
+        <strong>Richtige Antwort:</strong> Ein sich näherndes Gewitter</p>
+
+        <!-- Weitere Fragen mit Antworten hier -->
+    </div>
+</div>
+
+<script>
+    function showQuiz() {
+        // Quiz anzeigen und Vorbereitung verstecken
+        document.getElementById("quiz").style.display = "block";
+        document.getElementById("preparationContent").style.display = "none";
+    }
+
+    function showPreparation() {
+        // Vorbereitung anzeigen und Quiz verstecken
+        document.getElementById("preparationContent").style.display = "block";
+        document.getElementById("quiz").style.display = "none";
+    }
+
+    function evaluateQuiz() {
+        let score = 0;
+        const totalQuestions = 100; // Anzahl der Fragen
+
+        // Überprüfe alle Fragen (hier müssen alle Namen q1, q2, q3... entsprechend deiner Fragen überprüft werden)
+        for (let i = 1; i <= totalQuestions; i++) {
+            let questionName = 'q' + i;
+            if (document.querySelector('input[name="' + questionName + '"]:checked')?.value === "correct") {
+                score++;
+            }
+        }
+
+        // Ergebnis anzeigen
+        const resultElement = document.getElementById("quizResult");
+        resultElement.style.display = "block";
+        resultElement.textContent = "Du hast " + score + " von " + totalQuestions + " Fragen richtig beantwortet!";
+    }
+</script>
+
+</body>
+</html>
