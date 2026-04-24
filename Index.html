@@ -96,12 +96,54 @@
         .module-message.show {
             display: block;
         }
+
+        .gamification-bar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #1a252f;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #1abc9c;
+        }
+
+        .gamification-stat {
+            text-align: center;
+        }
+
+        .gamification-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f1c40f;
+        }
+
+        .gamification-label {
+            font-size: 14px;
+            color: #bdc3c7;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Drohnenführerschein Lern-App</h1>
+
+    <!-- Gamification Bar -->
+    <div class="gamification-bar">
+        <div class="gamification-stat">
+            <div class="gamification-value" id="ui-level">1</div>
+            <div class="gamification-label">Level</div>
+        </div>
+        <div class="gamification-stat">
+            <div class="gamification-value" id="ui-xp">0</div>
+            <div class="gamification-label">XP</div>
+        </div>
+        <div class="gamification-stat">
+            <div class="gamification-value" id="ui-streak">0 🔥</div>
+            <div class="gamification-label">Tage Streak</div>
+        </div>
+    </div>
+
     <p>Wähle einen Bereich aus, um wichtige Informationen zu lesen oder starte das Quiz:</p>
 
     <ul>
@@ -368,6 +410,31 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 1px solid #16a085;
+        }
+
+        .gamification-bar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #1a252f;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #1abc9c;
+        }
+
+        .gamification-stat {
+            text-align: center;
+        }
+
+        .gamification-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f1c40f;
+        }
+
+        .gamification-label {
+            font-size: 14px;
+            color: #bdc3c7;
         }
     </style>
 </head>
@@ -1474,6 +1541,53 @@
     }
 
 
+    // Gamification state initialization
+    function initGamification() {
+        let xp = parseInt(localStorage.getItem('droneAppXP')) || 0;
+        let level = parseInt(localStorage.getItem('droneAppLevel')) || 1;
+        let streak = parseInt(localStorage.getItem('droneAppStreak')) || 0;
+        let lastPlayed = localStorage.getItem('droneAppLastPlayed');
+
+        // Check streak
+        const today = new Date().toLocaleDateString();
+        if (lastPlayed !== today) {
+            if (lastPlayed === new Date(Date.now() - 86400000).toLocaleDateString()) {
+                streak++;
+            } else if (lastPlayed) {
+                streak = 0; // Reset streak if missed a day
+            }
+            localStorage.setItem('droneAppLastPlayed', today);
+            localStorage.setItem('droneAppStreak', streak);
+        }
+
+        updateGamificationUI(level, xp, streak);
+    }
+
+    function updateGamificationUI(level, xp, streak) {
+        document.getElementById('ui-level').innerText = level;
+        document.getElementById('ui-xp').innerText = xp;
+        document.getElementById('ui-streak').innerText = streak + ' 🔥';
+    }
+
+    function addXP(amount) {
+        let xp = parseInt(localStorage.getItem('droneAppXP')) || 0;
+        let level = parseInt(localStorage.getItem('droneAppLevel')) || 1;
+        let streak = parseInt(localStorage.getItem('droneAppStreak')) || 0;
+
+        xp += amount;
+
+        // Level up logic (100 XP per level)
+        const newLevel = Math.floor(xp / 100) + 1;
+        if (newLevel > level) {
+            level = newLevel;
+            alert(`Glückwunsch! Du hast Level ${level} erreicht! 🎉`);
+            localStorage.setItem('droneAppLevel', level);
+        }
+
+        localStorage.setItem('droneAppXP', xp);
+        updateGamificationUI(level, xp, streak);
+    }
+
     function evaluateQuiz() {
         let score = 0;
         const totalQuestions = 100; // Anzahl der Fragen
@@ -1490,10 +1604,18 @@
         const resultElement = document.getElementById("quizResult");
         resultElement.style.display = "block";
         resultElement.textContent = "Du hast " + score + " von " + totalQuestions + " Fragen richtig beantwortet!";
+
+        // Add gamification XP (e.g. 5 XP per correct answer)
+        const xpEarned = score * 5;
+        if (score > 0) {
+            addXP(xpEarned);
+            resultElement.innerHTML += `<br><span style="color: #f1c40f;">+${xpEarned} XP verdient!</span>`;
+        }
     }
 
-    // Jules Resume Agent
+    // Initialize Gamification and Jules Resume Agent
     document.addEventListener("DOMContentLoaded", () => {
+        initGamification();
         // Mock state for now
         const lastContext = "Du hast die Service Worker Registrierung in der Index.html hinzugefügt, aber die Datei 'service-worker.js' fehlt noch.";
         const nextStep = "Erstelle die Datei 'service-worker.js' mit grundlegendem Caching-Setup.";
